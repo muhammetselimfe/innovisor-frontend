@@ -1,0 +1,67 @@
+.navbar {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #FF394A;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+  padding: 7px 5px 5px;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-buttons button {
+  background-color: #000000;
+  color: #F5F5F9;
+  padding: 12px 20px;
+  border: 1px solid #FF394A;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-buttons button:hover {
+  background-color: #FF394A;
+  color: #F5F5F9;
+  transform: scale(1.05);
+}
+
+.connect-button {
+  background-color: #FF394A;
+  color: #F5F5F9;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-right: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.connect-button:hover {
+  background-color: #cc2e3b;
+  transform: scale(1.05);
+}

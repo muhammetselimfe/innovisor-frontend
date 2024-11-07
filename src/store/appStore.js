@@ -68,6 +68,21 @@ const useStore = create((set) => ({
     ],
   },
 
+  // Add new chat history state
+  conversations: [
+    {
+      id: 1,
+      title: 'First Conversation',
+      preview: 'Welcome to Innov8!',
+      messages: [
+        { text: 'Welcome to Innov8! How can I help you today?', isBot: true }
+      ]
+    }
+  ],
+  activeConversationId: 1,
+
+  isLoading: false,
+
   // Actions
   setCurrentPage: (page) => set((state) => {
     document.title = `Innov8 - ${page.charAt(0).toUpperCase() + page.slice(1)}`;
@@ -82,26 +97,42 @@ const useStore = create((set) => ({
   
   // Computed actions
   handleSendMessage: () => set((state) => {
-    if (state.inputMessage.trim() === '') return state;
+    if (state.inputMessage.trim() === '' || state.isLoading) return state;
 
-    // Add user message
-    const newMessages = [
-      ...state.messages,
-      { text: state.inputMessage, isBot: false }
-    ];
+    const updatedConversations = state.conversations.map(conv => {
+      if (conv.id === state.activeConversationId) {
+        return {
+          ...conv,
+          messages: [...conv.messages, { text: state.inputMessage, isBot: false }],
+          preview: state.inputMessage
+        };
+      }
+      return conv;
+    });
+
+    set({ isLoading: true });
 
     // Simulate bot response
     setTimeout(() => {
       set((state) => ({
-        messages: [...state.messages, {
-          text: "Thanks for your message! I'm here to help.",
-          isBot: true
-        }]
+        conversations: state.conversations.map(conv => {
+          if (conv.id === state.activeConversationId) {
+            return {
+              ...conv,
+              messages: [...conv.messages, {
+                text: "Thanks for your message! I'm here to help.",
+                isBot: true
+              }]
+            };
+          }
+          return conv;
+        }),
+        isLoading: false
       }));
     }, 1000);
 
     return {
-      messages: newMessages,
+      conversations: updatedConversations,
       inputMessage: ''
     };
   }),
@@ -122,6 +153,23 @@ const useStore = create((set) => ({
 
     return {
       transactions: [newTransaction, ...state.transactions]
+    };
+  }),
+
+  // Add new actions
+  setActiveConversation: (id) => set({ activeConversationId: id }),
+  
+  // Add new conversation
+  addNewConversation: () => set((state) => {
+    const newId = Math.max(...state.conversations.map(c => c.id)) + 1;
+    return {
+      conversations: [...state.conversations, {
+        id: newId,
+        title: `New Chat ${newId}`,
+        preview: 'Start a new conversation',
+        messages: []
+      }],
+      activeConversationId: newId
     };
   })
 }));
