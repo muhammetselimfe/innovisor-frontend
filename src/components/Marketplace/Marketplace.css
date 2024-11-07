@@ -1,0 +1,68 @@
+.marketplace-container {
+  padding: 20px;
+  color: #F5F5F9;
+}
+
+.marketplace-content {
+  margin-top: 20px;
+}
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.market-item {
+  background-color: #161617;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #FF394A;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.agent-description {
+  color: #F5F5F9;
+  margin: 10px 0;
+}
+
+.agent-capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.capability-tag {
+  background-color: #000000;
+  color: #F5F5F9;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9em;
+}
+
+.agent-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+  color: #F5F5F9;
+}
+
+.market-button {
+  background-color: #FF394A;
+  color: #F5F5F9;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.market-button:hover {
+  background-color: #cc2e3b;
+  transform: scale(1.05);
+}

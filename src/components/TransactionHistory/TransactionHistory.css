@@ -1,0 +1,62 @@
+.transaction-container {
+  padding: 20px;
+  color: #F5F5F9;
+}
+
+.transaction-content {
+  margin-top: 20px;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.transaction-item {
+  background-color: #161617;
+  padding: 15px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  border: 1px solid #FF394A;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-item span {
+  text-align: center;
+  color: #F5F5F9;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.status.completed {
+  background-color: #FF394A;
+  color: #F5F5F9;
+}
+
+.status.pending {
+  background-color: #000000;
+  color: #F5F5F9;
+}
+
+.date {
+  color: #F5F5F9;
+}
+
+.type {
+  color: #FF394A;
+  font-weight: bold;
+}
+
+.amount {
+  color: #F5F5F9;
+  font-weight: bold;
+}
